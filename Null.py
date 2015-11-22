@@ -128,7 +128,6 @@ class OffensiveReflexAgent(ReflexCaptureAgent):
         val = min(dists)
     if val<2:
         if myState.scaredTimer>5:
-            print "scaredTime"
             features['ghost'] = -.1
         else:
             features['ghost'] = 1
