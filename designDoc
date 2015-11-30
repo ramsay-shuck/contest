@@ -1,0 +1,27 @@
+Contest Plan:
+
+-Note- The only default way to keep track of moves is the scared timer. Having our own tracker as part of the 
+Offensive and DefensiveAgents might be helpful in determining when to recalculate paths and proximity to enemies.
+
+-Game Start!
+-Initialize!
+--Particle filter construction!
+--Build the initial most efficient path! 
+  The Spawn point is effectively in the same spot on every different map,
+  so this can even be a path to just the closest enemy food until we recalculate the path. Can Recalculate the path when 
+  our pacmans see the first fork in the road after spawning to save computing time.
+--Start Moving!
+---Keep track of how many moves occurred.
+---Travel along the calculateed path
+---This path includes:
+----depth limited to conserve computation time.
+----enemy food locations
+----enemy locations
+----enemy capsule locations. 
+    Measure these proximities against enemy proximity along the path. Can decrease the weight of the capsule if it is early
+    in the game (save capsules for a rainy day near the end) and increase their weight near the end of the game 
+    (don't let them go to waste). Otherwise, the capsule proximities and enemy proximities should be on par with 
+    each other disregarding the previously mentioned weight.
+----A Star Search. 
+    Need to be quick. 
+    
