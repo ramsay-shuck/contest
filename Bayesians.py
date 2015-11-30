@@ -182,9 +182,11 @@ class DefensiveReflexAgent(ReflexCaptureAgent):
       else:
           features['invaderDistance'] = min(dists)*-1
     '''
-    dists = [] #Particle filter - if we know the exact location, move the particles to the spot it's at
+    dists = [] #FIXME Particle filter - if we know the exact location, move the particles to the spot it's at
 
-    particleFilter = JointParticleFilter()
+
+    particleFilter = ParticleFilter()
+    
 
     if action == Directions.STOP: features['stop'] = 1
     rev = Directions.REVERSE[gameState.getAgentState(self.index).configuration.direction]
@@ -195,6 +197,7 @@ class DefensiveReflexAgent(ReflexCaptureAgent):
   def getWeights(self, gameState, action):
     return {'numInvaders': -1000, 'distanceToFood': -2, 'onDefense': 100, 'invaderDistance': -10, 'stop': -100, 'reverse': -2, 'distanceToCapsule': -5}
 
+'''
 # The JointParticleFilter and getObservationDistribution method (and associated constants) were copied from project4
 class JointParticleFilter:
   "JointParticleFilter tracks a joint distribution over tuples of all ghost positions."
@@ -313,3 +316,5 @@ def getObservationDistribution(noisyDistance):
       distribution[max(1, noisyDistance - error)] += prob
     observationDistributions[noisyDistance] = distribution
   return observationDistributions[noisyDistance]
+'''
+
